@@ -21,7 +21,7 @@ async def on_ready():
   logging.info("Bot is now online in Discord")
 
 @bot.event
-async def on_message(message):
+async def hello_message(message):
   """Reply to any hello bot message in the channel"""
   if message.author == bot.user:
     return
