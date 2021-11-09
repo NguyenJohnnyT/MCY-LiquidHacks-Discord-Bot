@@ -28,5 +28,15 @@ async def on_message(message):
   if message.content == "!hello" or "!Hello":
     await message.channel.send("I am MCY bot")
 
+@slash.slash(name='MCY-help',
+            description="Check MCY bot commands",
+            guild_ids=guild_id)
+async def helpsOnTheWay(ctx: SlashContext):
+  """Gives a list of commands the user can use"""
+  """Add different commands here as more commands are implemented"""
+  logging.info("Received slash command /MCY-help.")
+  await ctx.send(content=(
+    "The following commands are available: ```/MCY-help \n!hello```"
+  ))
 # Run the bot
 bot.run(bot_token)
