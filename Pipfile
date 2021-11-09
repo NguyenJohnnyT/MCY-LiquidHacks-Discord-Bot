@@ -4,12 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-
-[dev-packages]
 discord = "*"
 discord-py-slash-command = "*"
 python-dotenv = "*"
 requests = "*"
+
+[dev-packages]
 
 [requires]
 python_version = "3.10"
