@@ -54,4 +54,6 @@ def read_from_env() -> tuple[str, Optional[list[int]], int]:
     if log_lvl_str:
         log_lvl = int(log_lvl_str)
 
-    return bot_token, guild_ids, log_lvl
+    apiKey = os.getenv('API_KEY')
+
+    return bot_token, guild_ids, log_lvl, apiKey
