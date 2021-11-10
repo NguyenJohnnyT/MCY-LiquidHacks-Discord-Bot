@@ -43,7 +43,10 @@ async def helpsOnTheWay(ctx: SlashContext):
   """Add different commands here as more commands are implemented"""
   logging.info("Received slash command /MCY-help.")
   await ctx.send(content=(
-    "The following commands are available: ```/MCY-help \n!hello```"
+    "The following commands are available: ```/MCY-help - Check MCY bot commands"\
+    "\n/MCY-getPlayer - Enter a wiki and a player name to get a short bio about the player."\
+    "\n!hello - Bot says hello!"\
+    "\n!bye - Bot says bye!```"
   ))
 
 @slash.slash(
@@ -61,17 +64,23 @@ async def testing(ctx: SlashContext):
   guild_ids=guild_id,
   options=[
     create_option(
+      name='wiki',
+      description='type !wiki for a list of available wikis',
+      required=True,
+      option_type=3
+    ),
+    create_option(
       name='player',
       description='Give a player name. Hint: Case sensitive, match their name on liquipedia page',
-      required=False,
+      required=True,
       option_type=3
     )
   ])
-async def showPlayerStats(ctx: SlashContext, player:str):
+async def showPlayerStats(ctx: SlashContext, wiki:str, player:str, ):
   logging.info("Received slash command /MCY-getPlayer")
   try:
     await ctx.defer()
-    data = getPlayer(player, apiKey)
+    data = getPlayer(wiki, player, apiKey)
     if len(data) != 0:
       await ctx.send(content=(
         f"```{data['id']}, known as {data['romanizedname'] or '(name unavailable)'}, is a {data['wiki']} player born on {data['birthdate'] or '(birthdate unavailable)'} with origins from {data['nationality'] or '(nationality unavailable)'}.\n"
