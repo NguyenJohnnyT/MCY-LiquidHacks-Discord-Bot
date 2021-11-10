@@ -57,13 +57,13 @@ async def testing(ctx: SlashContext):
 
 @slash.slash(
   name='MCY-getPlayer',
-  description="Get information about a player",
+  description="Get information about a player, leave blank for random",
   guild_ids=guild_id,
   options=[
     create_option(
       name='player',
-      description='Give a player name',
-      required=True,
+      description='Give a player name. Hint: Case sensitive, match their name on liquipedia page',
+      required=False,
       option_type=3
     )
   ])
@@ -72,14 +72,14 @@ async def showPlayerStats(ctx: SlashContext, player:str):
   try:
     await ctx.defer()
     data = getPlayer(player, apiKey)
-    if len(data['result']) != 0:
-      await ctx.send(content=(f"```{data['result'][0]}```"))
+    if len(data) != 0:
+      await ctx.send(content=(f"```{data}```"))
     else:
       if player[0].isupper():
-        await ctx.send(content=f'No results found for {player}')
+        await ctx.send(content=f'```No results found for {player}```')
       else:
         correctedPlayer = player[0].upper() + player[1:len(player)]
-        await ctx.send(content=f'No results found for {player} (have you tried {correctedPlayer}?)')
+        await ctx.send(content=f'```No results found for {player} (have you tried {correctedPlayer}?)```')
   except HTTPError as err:
     logging.exception(f"Liuqipedia API returned an error {err.response.text}.")
     await ctx.send("Calling liquipedia API failed. See console log for details")
