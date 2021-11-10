@@ -73,7 +73,18 @@ async def showPlayerStats(ctx: SlashContext, player:str):
     await ctx.defer()
     data = getPlayer(player, apiKey)
     if len(data) != 0:
-      await ctx.send(content=(f"```{data}```"))
+      await ctx.send(content=(
+        f"```{data['id']}, known as {data['romanizedname'] or '(name unavailable)'}, is a {data['wiki']} player born on {data['birthdate'] or '(birthdate unavailable)'} with origins from {data['nationality'] or '(nationality unavailable)'}.\n"
+        f"They currently play as {data['extradata']['role'] or '(Role unavailable)'} for {data['team'] or 'no team (free agent)'} and are known for their {data['extradata']['hero']} and {data['extradata']['hero2']}.```"
+        f"Check them out at:\n"
+        f"Liquipedia: https://liquipedia.net/{data['wiki']}/{data['pagename']}\n" 
+        f"Twitter: {data['links']['twitter'] or 'N/A'}\n"
+        f"Facebook: {data['links']['facebook'] or 'N/A'}\n"
+        f"Youtube: {data['links']['youtube'] or 'N/A'}\n"
+        f"Reddit: {data['links']['reddit'] if data['links']['reddit'] else 'N/A'}\n"
+        f"VK: {data['links']['vk'] or 'N/A'}\n"
+        f"Weibo: {data['links']['weibo'] or 'N/A'}"
+        ))
     else:
       if player[0].isupper():
         await ctx.send(content=f'```No results found for {player}```')
