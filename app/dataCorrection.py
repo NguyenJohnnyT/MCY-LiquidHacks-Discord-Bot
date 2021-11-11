@@ -10,6 +10,10 @@ def correctedData (data):
     data['extradata']['role'] = "(role unavailable)"
   if data['wiki'] == 'starcraft': #starcraft
     data['extradata']['role'] = data['extradata']['faction']
+  if data['wiki'] == 'leagueoflegends': #league of legends champions
+    data['extradata']['hero'] = data['extradata']['signature']
+    data['extradata']['hero2'] = data['extradata']['signature2']
+    data['extradata']['hero3'] = data['extradata']['signature3']
   if not 'hero' in data['extradata']:
     data['extradata']['hero'] = '(N/A)'
   if not 'hero2' in data['extradata']:
