@@ -5,7 +5,8 @@ from requests.models import HTTPError
 from config import read_from_env
 from discord_slash import SlashCommand, SlashContext
 from discord_slash.utils.manage_commands import create_option
-from liquipediaAPI import getPlayer
+from liquipediaAPI import getPlayer, printData
+from dataCorrection import correctedData
 
 # Read cofig from environment variables
 bot_token, guild_id, _, apiKey = read_from_env()
@@ -39,21 +40,27 @@ async def hello_message(message):
   guild_ids=guild_id
 )
 async def helpsOnTheWay(ctx: SlashContext):
-  """Gives a list of commands the user can use"""
-  """Add different commands here as more commands are implemented"""
+  """Gives a list of commands the user can use\
+  Add different commands here as more commands are implemented"""
   logging.info("Received slash command /MCY-help.")
   await ctx.send(content=(
-    "The following commands are available: ```/MCY-help \n!hello```"
+    "The following commands are available: ```/MCY-help - Check MCY bot commands"\
+    "\n/MCY-getPlayer - Enter a wiki and a player name to get a short bio about the player."\
+    "\n!hello - Bot says hello!"\
+    "\n!bye - Bot says bye!```"
   ))
 
 @slash.slash(
-  name='test',
-  description="testing",
+  name='MCY-wiki',
+  description="Get a list of available wikis",
   guild_ids=guild_id)
-async def testing(ctx: SlashContext):
-  """trying to display the object bot is getting"""
-  logging.info("Received slash command /test.")
-  await ctx.send()
+async def wikiList(ctx: SlashContext):
+  """Displays a list of liquipedia wikis"""
+  logging.info("Received slash command /MCY-wiki.")
+  await ctx.send(content=(
+    "The following wikis are available in alphabetical order.\n"\
+    "```ageofempires, apexlegends, arenafps, arenaofvalor, artifact, autochess, battalion, battlerite, brawlstars, callofduty, clashroyale, counterstrike, criticalops, crossfire, dota2, fifa, fighters, fortnite, freefire, halo, hearthstone, heroes, leagueoflegends, magic, overwatch, paladins, pokemon, pubg, rainbowsix, rocketleague, runeterra, simracing, smash, squadrons, starcraft, starcraft2, teamfighttactics, teamfortress, trackmania, underlords, valorant, warcraft, wildrift, worldofwarcraft```"
+  ))
 
 @slash.slash(
   name='MCY-getPlayer',
@@ -61,34 +68,36 @@ async def testing(ctx: SlashContext):
   guild_ids=guild_id,
   options=[
     create_option(
+      name='wiki',
+      description='type !wiki for a list of available wikis',
+      required=True,
+      option_type=3
+    ),
+    create_option(
       name='player',
       description='Give a player name. Hint: Case sensitive, match their name on liquipedia page',
-      required=False,
+      required=True,
       option_type=3
     )
   ])
-async def showPlayerStats(ctx: SlashContext, player:str):
+async def showPlayerStats(ctx: SlashContext, wiki:str, player:str, ):
+  '''The bot receives user-inputted wiki and player query.  The bot sends a message containing player information'''
   logging.info("Received slash command /MCY-getPlayer")
   try:
     await ctx.defer()
-    data = getPlayer(player, apiKey)
-    if len(data) != 0:
+    data = getPlayer(wiki, player, apiKey) #get player JSON
+    if type(data) == dict:
+      data = correctedData(data) #edit JSON for missing info
+      content = printData(data) #obtain content to be displayed
+      await ctx.send(content=content) #send the content into chat
+    elif data == 'Invalid Wiki':
       await ctx.send(content=(
-        f"```{data['id']}, known as {data['romanizedname'] or '(name unavailable)'}, is a {data['wiki']} player born on {data['birthdate'] or '(birthdate unavailable)'} with origins from {data['nationality'] or '(nationality unavailable)'}.\n"
-        f"They currently play as {data['extradata']['role'] or '(Role unavailable)'} for {data['team'] or 'no team (free agent)'} and are known for their {data['extradata']['hero']} and {data['extradata']['hero2']}.```"
-        f"Check them out at:\n"
-        f"Liquipedia: https://liquipedia.net/{data['wiki']}/{data['pagename']}\n" 
-        f"Twitter: {data['links']['twitter'] or 'N/A'}\n"
-        f"Facebook: {data['links']['facebook'] or 'N/A'}\n"
-        f"Youtube: {data['links']['youtube'] or 'N/A'}\n"
-        f"Reddit: {data['links']['reddit'] if data['links']['reddit'] else 'N/A'}\n"
-        f"VK: {data['links']['vk'] or 'N/A'}\n"
-        f"Weibo: {data['links']['weibo'] or 'N/A'}"
-        ))
+        f"`{wiki}` is not a valid wiki.  Type `/MCY-wiki` to get a list of valid wikis"
+      ))
     else:
-      if player[0].isupper():
+      if player[0].isupper(): #check if first letter is capitalized
         await ctx.send(content=f'```No results found for {player}```')
-      else:
+      else: #suggest capitalizing first letter of player name
         correctedPlayer = player[0].upper() + player[1:len(player)]
         await ctx.send(content=f'```No results found for {player} (have you tried {correctedPlayer}?)```')
   except HTTPError as err:
