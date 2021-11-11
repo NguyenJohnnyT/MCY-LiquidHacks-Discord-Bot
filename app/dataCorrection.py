@@ -18,8 +18,9 @@ def correctedData (data):
     data['extradata']['hero'] = '(N/A)'
   if not 'hero2' in data['extradata']:
     data['extradata']['hero2'] = '(N/A)'
-  if not 'team' in data:
+  if data['team'] == "":
     data['team'] = 'no team (free agent)'
+  #PLAYER SOCIAL LINKS
   if data['links']['twitter'] == "":
     data['links']['twitter'] = '`N/A`'
   if data['links']['facebook'] == "":

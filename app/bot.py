@@ -85,19 +85,19 @@ async def showPlayerStats(ctx: SlashContext, wiki:str, player:str, ):
   logging.info("Received slash command /MCY-getPlayer")
   try:
     await ctx.defer()
-    data = getPlayer(wiki, player, apiKey)
+    data = getPlayer(wiki, player, apiKey) #get player JSON
     if type(data) == dict:
-      data = correctedData(data)
-      content = printData(data)
-      await ctx.send(content=content)
+      data = correctedData(data) #edit JSON for missing info
+      content = printData(data) #obtain content to be displayed
+      await ctx.send(content=content) #send the content into chat
     elif data == 'Invalid Wiki':
       await ctx.send(content=(
         f"`{wiki}` is not a valid wiki.  Type `/MCY-wiki` to get a list of valid wikis"
       ))
     else:
-      if player[0].isupper():
+      if player[0].isupper(): #check if first letter is capitalized
         await ctx.send(content=f'```No results found for {player}```')
-      else:
+      else: #suggest capitalizing first letter of player name
         correctedPlayer = player[0].upper() + player[1:len(player)]
         await ctx.send(content=f'```No results found for {player} (have you tried {correctedPlayer}?)```')
   except HTTPError as err:
