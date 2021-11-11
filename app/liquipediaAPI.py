@@ -1,6 +1,9 @@
 import requests
 
+wikiList = ["ageofempires", "apexlegends", "arenafps", "arenaofvalor", "artifact", "autochess", "battalion", "battlerite", "brawlstars"," callofduty", "clashroyale", "counterstrike", "criticalops", "crossfire", "dota2", "fifa", "fighters", "fortnite", "freefire", "halo", "hearthstone", "heroes", "leagueoflegends", "magic", "overwatch", "paladins", "pokemon", "pubg", "rainbowsix", "rocketleague", "runeterra", "simracing", "smash", "squadrons", "starcraft", "starcraft2", "teamfighttactics", "teamfortress", "trackmania", "underlords", "valorant", "warcraft", "wildrift", "worldofwarcraft"]
 def getPlayer (wiki, player, apiKey):
+  if wiki not in wikiList:
+    return 'Invalid Wiki'
   response = requests.get(f"https://api.liquipedia.net/api/v2/player?wiki={wiki}&limit=1&conditions=%5B%5Bid%3A%3A{player}%5D%5D",
     headers={'Authorization': f'Apikey {apiKey}'})
   data = response.json()
