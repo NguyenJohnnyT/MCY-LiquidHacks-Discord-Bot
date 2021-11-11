@@ -20,6 +20,8 @@ def read_from_env() -> tuple[str, Optional[list[int]], int]:
             makes the commands be updated/available much faster in the Discord channel.
 
         - log_lvl (int): Defines how detailed the log output of the application is.
+
+        - apiKey (str): Devs' Liquipedia API key used for queries
     """
     # Set some defaults for fallback.
     bot_token = ''

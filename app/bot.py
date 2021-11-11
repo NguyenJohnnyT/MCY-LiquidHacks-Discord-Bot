@@ -40,8 +40,8 @@ async def on_message(message):
   guild_ids=guild_id
 )
 async def helpsOnTheWay(ctx: SlashContext):
-  """Gives a list of commands the user can use"""
-  """Add different commands here as more commands are implemented"""
+  """Gives a list of commands the user can use\
+  Add different commands here as more commands are implemented"""
   logging.info("Received slash command /MCY-help.")
   await ctx.send(content=(
     "The following commands are available: ```/MCY-help - Check MCY bot commands"\
@@ -81,6 +81,7 @@ async def wikiList(ctx: SlashContext):
     )
   ])
 async def showPlayerStats(ctx: SlashContext, wiki:str, player:str, ):
+  '''The bot receives user-inputted wiki and player query.  The bot sends a message containing player information'''
   logging.info("Received slash command /MCY-getPlayer")
   try:
     await ctx.defer()
