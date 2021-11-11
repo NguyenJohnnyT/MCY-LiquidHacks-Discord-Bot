@@ -9,3 +9,17 @@ def getPlayer (wiki, player, apiKey):
   else:
     return data['result'][0]
 
+def printData (data):
+  content = (
+        f"```{data['id']}, known as {data['romanizedname']}, is a {data['wiki']} player born on {data['birthdate']} with origins from {data['nationality']}.\n"
+        f"They currently play as {data['extradata']['role']} for {data['team']} and are known for their {data['extradata']['hero']} and {data['extradata']['hero2']}.```"
+        f"Check them out at:\n"
+        f"Liquipedia: https://liquipedia.net/{data['wiki']}/{data['pagename']}\n" 
+        f"Twitter: {data['links']['twitter']}\n"
+        f"Facebook: {data['links']['facebook']}\n"
+        f"Youtube: {data['links']['youtube']}\n"
+        f"Reddit: {data['links']['reddit']}\n"
+        f"VK: {data['links']['vk']}\n"
+        f"Weibo: {data['links']['weibo']}"
+        )
+  return content

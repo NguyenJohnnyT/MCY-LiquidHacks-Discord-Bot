@@ -5,7 +5,8 @@ from requests.models import HTTPError
 from config import read_from_env
 from discord_slash import SlashCommand, SlashContext
 from discord_slash.utils.manage_commands import create_option
-from liquipediaAPI import getPlayer
+from liquipediaAPI import getPlayer, printData
+from dataCorrection import correctedData
 
 # Read cofig from environment variables
 bot_token, guild_id, _, apiKey = read_from_env()
@@ -50,13 +51,16 @@ async def helpsOnTheWay(ctx: SlashContext):
   ))
 
 @slash.slash(
-  name='test',
-  description="testing",
+  name='MCY-wiki',
+  description="Get a list of available wikis",
   guild_ids=guild_id)
-async def testing(ctx: SlashContext):
-  """trying to display the object bot is getting"""
-  logging.info("Received slash command /test.")
-  await ctx.send()
+async def wikiList(ctx: SlashContext):
+  """Displays a list of liquipedia wikis"""
+  logging.info("Received slash command /MCY-wiki.")
+  await ctx.send(content=(
+    "The following wikis are available in alphabetical order.\n"\
+    "```ageofempires, apexlegends, arenafps, arenaofvalor, artifact, autochess, battalion, battlerite, brawlstars, callofduty, clashroyale, counterstrike, criticalops, crossfire, dota2, fifa, fighters, fortnite, freefire, halo, hearthstone, heroes, leagueoflegends, magic, overwatch, paladins, pokemon, pubg, rainbowsix, rocketleague, runeterra, simracing, smash, squadrons, starcraft, starcraft2, teamfighttactics, teamfortress, trackmania, underlords, valorant, warcraft, wildrift, worldofwarcraft```"
+  ))
 
 @slash.slash(
   name='MCY-getPlayer',
@@ -82,18 +86,9 @@ async def showPlayerStats(ctx: SlashContext, wiki:str, player:str, ):
     await ctx.defer()
     data = getPlayer(wiki, player, apiKey)
     if len(data) != 0:
-      await ctx.send(content=(
-        f"```{data['id']}, known as {data['romanizedname'] or '(name unavailable)'}, is a {data['wiki']} player born on {data['birthdate'] or '(birthdate unavailable)'} with origins from {data['nationality'] or '(nationality unavailable)'}.\n"
-        f"They currently play as {data['extradata']['role'] or '(Role unavailable)'} for {data['team'] or 'no team (free agent)'} and are known for their {data['extradata']['hero']} and {data['extradata']['hero2']}.```"
-        f"Check them out at:\n"
-        f"Liquipedia: https://liquipedia.net/{data['wiki']}/{data['pagename']}\n" 
-        f"Twitter: {data['links']['twitter'] or 'N/A'}\n"
-        f"Facebook: {data['links']['facebook'] or 'N/A'}\n"
-        f"Youtube: {data['links']['youtube'] or 'N/A'}\n"
-        f"Reddit: {data['links']['reddit'] if data['links']['reddit'] else 'N/A'}\n"
-        f"VK: {data['links']['vk'] or 'N/A'}\n"
-        f"Weibo: {data['links']['weibo'] or 'N/A'}"
-        ))
+      data = correctedData(data)
+      content = printData(data)
+      await ctx.send(content=content)
     else:
       if player[0].isupper():
         await ctx.send(content=f'```No results found for {player}```')
