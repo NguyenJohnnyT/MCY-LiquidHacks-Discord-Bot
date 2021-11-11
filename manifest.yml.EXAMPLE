@@ -1,0 +1,15 @@
+---
+applications:
+- name: discord-slash-cmd
+  buildpacks:
+    - python_buildpack
+  host: learningfestival
+  path: .
+  memory: 128M
+  env:
+    BOT_TOKEN: <BOT_TOKEN>
+    LOG_LEVEL: '30'
+    API_KEY: <ApiKey>
+  command: python app/bot.py
+  health-check-type: none
+  no-route: true

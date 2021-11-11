@@ -4,3 +4,4 @@ venv
 .env
 .env.dev
 __pycache__
+manifest.yml
