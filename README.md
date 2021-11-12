@@ -5,7 +5,7 @@
 
 A discord bot that utilizes the Liquipedia API for submission into the Team Liquid Hackathon 2.0.
 
-### [Demo video](#)
+### [Demo video](https://www.youtube.com/watch?v=hJne8T8naEE)
 
 ## Test the bot
 [Discord invite link](https://discord.gg/bFKMDR64Sp) (Temporary membership--You will be automatically kicked once disconnected, but this invite link does not expire.)
