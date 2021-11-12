@@ -1,5 +1,6 @@
 ![Header](./README_assets/header.jpeg)
 
+<a id='installation'></a>
 # Installation
 Installation steps are largely accredited and referenced to [Martin's Discord Bot tutorial](https://github.com/simachri/discord-bot-techlearn-sapcloud/blob/master/Project_Setup.md#prepare_discord_bot_appl)
 
@@ -43,7 +44,7 @@ Some files of interest here are the `.EXAMPLE` files within the root folder.  Be
 <a id='bot-token'></a>
 1. Get your `BOT_TOKEN`: Go back to menu item _Bot_ and press the `copy` button in the _TOKEN_ section.  Do not share this token with anyone else.
 
-<a href='#'>back to top</a>
+<a href='#installation'>back to top</a>
 #
 <a id='guild-ID'></a>
 
@@ -57,7 +58,7 @@ discord.com/channels/<THIS NUMBER>/<another number>
 
 Another way to obtain your guild ID through the desktop app is to go to your `User Settings > Advanced > enable Developer Mode`. Then right click on your server name or icon and press `Copy ID`.
 
-<a href='#'>back to top</a>
+<a href='#installation'>back to top</a>
 #
 <a id='local-deploy'></a>
 
@@ -83,10 +84,10 @@ python app/bot.py --env-file .env.dev
 ```
 If you have VSCode, you can simply press `f5` to run the app.  Alternatively, click the `Run and Debug` button on the left hand side and press the `Play` button.
 
-<a href='#'>back to top</a>
+<a href='#installation'>back to top</a>
 #
 <a id='SAP-cloud'></a>
 ## Deploying to SAP Cloud
 Refer to [this](https://github.com/simachri/discord-bot-techlearn-sapcloud/blob/master/Project_Setup.md#deployment_cf) to deploy to the SAP cloud. If you have SAP Business Application Studio and wish to develop the code on it, be sure to reference [this](https://github.com/simachri/discord-bot-techlearn-sapcloud/blob/master/Project_Setup.md#proj_setup_bas) right above afore mentioned link.
 
-<a href='#'>back to top</a>
+<a href='#installation'>back to top</a>
