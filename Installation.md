@@ -1,12 +1,14 @@
+![Header](./README_assets/header.jpeg)
+
 # Installation
 Installation steps are largely accredited and referenced to [Martin's Discord Bot tutorial](https://github.com/simachri/discord-bot-techlearn-sapcloud/blob/master/Project_Setup.md#prepare_discord_bot_appl)
 
 ## Table of contents
-* [Required tokens and setup](#tokens)
-* [Prepare your Discord Bot](#bot-prepare)
-* [Get your guild-ID](#guild-ID)
-* [Local Deployment](#local-deploy)
-* [Deploy on SAP Cloud](#SAP-cloud)
+<img width='15px' height='15px' src='./README_assets/bluebullet.png'/>  [Required tokens and setup](#tokens)\
+<img width='15px' height='15px' src='./README_assets/bluebullet.png'/>  [Prepare your Discord Bot](#bot-prepare)\
+<img width='15px' height='15px' src='./README_assets/bluebullet.png'/>  [Get your guild-ID](#guild-ID)\
+<img width='15px' height='15px' src='./README_assets/bluebullet.png'/>  [Local Deployment](#local-deploy)\
+<img width='15px' height='15px' src='./README_assets/bluebullet.png'/>  [Deploy on SAP Cloud](#SAP-cloud)
 
 <a id='tokens'></a>
 
@@ -39,7 +41,7 @@ Some files of interest here are the `.EXAMPLE` files within the root folder.  Be
     1. Copy the URL and open it in the browser to authorize the bot to be used in the Discord Server
 1. Check your server to see if the bot is there.  It should be offline but also in the list of users there.
 <a id='bot-token'></a>
-1. Get your `BOT_TOKEN`: Go back to menu item _Bot_ and press the `copy` button.  Do not share this token with anyone else.
+1. Get your `BOT_TOKEN`: Go back to menu item _Bot_ and press the `copy` button in the _TOKEN_ section.  Do not share this token with anyone else.
 
 <a href='#'>back to top</a>
 #

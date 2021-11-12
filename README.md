@@ -1,5 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+![Header](./README_assets/header.jpeg)
 # MCY LiquidHacks 2.0 Discord Bot
 
 A discord bot that utilizes the Liquipedia API for submission into the Team Liquid Hackathon 2.0.
@@ -11,11 +12,11 @@ A discord bot that utilizes the Liquipedia API for submission into the Team Liqu
 #
 
 ## Table of Contents
-* [What is it](#Description)
-* [Why make it](#Why)
-* [Drawbacks and future improvements](#Drawbacks)
-* [Installation](#Installation)
-* [Special Thanks](#Thanks)
+<img width='15px' height='15px' src='./README_assets/bluebullet.png'/>  [What is it](#Description)\
+<img width='15px' height='15px' src='./README_assets/bluebullet.png'/>  [Why make it](#Why)\
+<img width='15px' height='15px' src='./README_assets/bluebullet.png'/>  [Drawbacks and future improvements](#Drawbacks)\
+<img width='15px' height='15px' src='./README_assets/bluebullet.png'/>  [Installation](#Installation)\
+<img width='15px' height='15px' src='./README_assets/bluebullet.png'/>  [Special Thanks](#Thanks)
 
 <a id='Description'></a>
 ## What is it? (Usage)
