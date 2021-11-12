@@ -25,7 +25,7 @@ async def on_ready():
   logging.info("Bot is now online in Discord")
 
 @bot.event
-async def on_message(message):
+async def hello_message(message):
   """Reply to any hello bot message in the channel"""
   if message.author == bot.user:
     return
@@ -45,8 +45,9 @@ async def helpsOnTheWay(ctx: SlashContext):
   logging.info("Received slash command /MCY-help.")
   await ctx.send(content=(
     "The following commands are available: ```/MCY-help - Check MCY bot commands"\
+    "\n/MCY-wiki - Get a list of wikis"\
     "\n/MCY-getPlayer - Enter a wiki and a player name to get a short bio about the player."\
-    "\n!hello - Bot says hello!"\
+    "\n!hello - Bot introduces themself!"\
     "\n!bye - Bot says bye!```"
   ))
 
