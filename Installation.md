@@ -2,7 +2,7 @@
 
 <a id='installation'></a>
 # Installation
-Installation steps are largely accredited and referenced to [Martin's Discord Bot tutorial](https://github.com/simachri/discord-bot-techlearn-sapcloud/blob/master/Project_Setup.md#prepare_discord_bot_appl)
+Installation steps are largely accredited and referenced to [Marvin's Discord Bot tutorial](https://github.com/simachri/discord-bot-techlearn-sapcloud/blob/master/Project_Setup.md#prepare_discord_bot_appl)
 
 ## Table of contents
 <img width='15px' height='15px' src='./README_assets/bluebullet.png'/>  [Required tokens and setup](#tokens)\

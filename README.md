@@ -52,8 +52,8 @@ While googling a player on liquipedia is likely to be very quick, being able to 
 
 <a id='Thanks'></a>
 ## Special Thanks
-[Martin](https://github.com/simachri) -- for his talk on creating and deploying a discord bot, and also an SAP BTP trial account\
-[Discord bot tutorial](https://github.com/simachri/discord-bot-techlearn-sapcloud/blob/master/Project_Setup.md#deployment_cf) -- Martin's repository.  Referenced and borrowed some code here for `app.config.py` and `app.bot.py`\
+[Marvin](https://github.com/simachri) -- for his talk on creating and deploying a discord bot, and also an SAP BTP trial account\
+[Discord bot tutorial](https://github.com/simachri/discord-bot-techlearn-sapcloud/blob/master/Project_Setup.md#deployment_cf) -- Marvin's repository.  Referenced and borrowed some code here for `app.config.py` and `app.bot.py`\
 [LiquidHacks 2.0](https://liquidhacks.teamliquid.com/) Team Liquid's Hackathon event\
 [Liquipedia](https://www.liquipedia.net) The best website for esports information!\
 [Liquipedia API](https://api.liquipedia.net) \
