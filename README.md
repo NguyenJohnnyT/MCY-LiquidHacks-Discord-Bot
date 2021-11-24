@@ -8,7 +8,8 @@ A discord bot that utilizes the Liquipedia API for submission into the Team Liqu
 ### [Demo video](https://www.youtube.com/watch?v=hJne8T8naEE)
 
 ## Test the bot
-[Discord invite link](https://discord.gg/bFKMDR64Sp) (Temporary membership--You will be automatically kicked once disconnected, but this invite link does not expire.)
+[Discord invite link](https://discord.gg/bFKMDR64Sp) (Temporary membership--You will be automatically kicked once disconnected, but this invite link does not expire.)\
+**Note**: If the bot is not online, feel free to message me (mechocreamy#8076) on discord to activate the bot.
 #
 
 ## Table of Contents
