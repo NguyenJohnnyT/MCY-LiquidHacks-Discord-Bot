@@ -9,7 +9,8 @@ A discord bot that utilizes the Liquipedia API for submission into the Team Liqu
 ### [Devpost project submission](https://devpost.com/software/mcy-liquipedia-bot)
 
 ## Test the bot
-[Discord invite link](https://discord.gg/bFKMDR64Sp) (Temporary membership--You will be automatically kicked once disconnected, but this invite link does not expire.)
+[Discord invite link](https://discord.gg/bFKMDR64Sp) (Temporary membership--You will be automatically kicked once disconnected, but this invite link does not expire.)\
+**Note**: If the bot is not online, feel free to message me (mechocreamy#8076) on discord to activate the bot.
 #
 
 ## Table of Contents
